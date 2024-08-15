@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h2>Welcome to Pix-Tag</h2>
+    <nav>
+        <a href="{{ url_for('upload_image') }}">Upload Image</a> |
+        <a href="{{ url_for('search_thumbnail') }}">Search Thumbnail</a> |
+        <a href="{{ url_for('delete_images') }}">Delete Images</a> |
+        <a href="{{ url_for('edit_tags') }}">Edit Tags</a> |
+        <a href="{{ url_for('get_image_tag') }}">Find Image using Tag</a> |
+        <a href="{{ url_for('query_image_tags') }}">Get Matching Tags</a> |
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+</body>
+</html>

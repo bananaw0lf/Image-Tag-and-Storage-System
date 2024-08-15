@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thumbnail Search</title>
+</head>
+<body>
+    <h2>Search Thumbnail</h2>
+    <form method="post">
+        <label for="thumbnail_url">Enter Thumbnail URL:</label>
+        <input type="text" id="thumbnail_url" name="thumbnail_url" required>
+        <button type="submit">Search</button>
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</body>
+</html>

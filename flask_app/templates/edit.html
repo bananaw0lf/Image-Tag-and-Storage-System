@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Image Tags</title>
+</head>
+<body>
+    <h1>Edit Image Tags</h1>
+
+    <!-- Display Thumbnail URLs and Tags -->
+    {% if items %}
+        <h2>Thumbnail URLs and Tags</h2>
+        <ul>
+            {% for item in items %}
+                <li>
+                    <strong>Thumbnail URL:</strong> {{ item.thumbnail_image_url }}<br>
+                    <strong>Tags:</strong> {{ item.tags }}
+                </li>
+                <br>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <br>
+    <!-- Form to Add or Remove Tags -->
+    <form method="POST">
+        <label for="url">Image URL:</label><br>
+        <input type="text" id="url" name="url" required><br><br>
+
+        <label>Operation Type:</label><br>
+        <input type="radio" id="add" name="type" value="1" required>
+        <label for="add">Add Tags</label><br>
+        <input type="radio" id="remove" name="type" value="0">
+        <label for="remove">Remove Tags</label><br><br>
+
+        <label for="tags">Tags (comma separated):</label><br>
+        <input type="text" id="tags" name="tags" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <br>
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message[1] }}">
+                    {{ message[0] }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <br>
+    <!-- Back to Home Link -->
+    <p><a href="{{ url_for('index') }}">Back to Home</a></p>
+</body>
+</html>

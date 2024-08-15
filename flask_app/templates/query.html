@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query Image Tags</title>
+</head>
+<body>
+    <h1>Query Image Tags</h1>
+    <form method="post" enctype="multipart/form-data" action="{{ url_for('query_image_tags') }}">
+        <label>Select Image:</label>
+        <input type="file" name="file">
+        <input type="submit" value="Query">
+    </form>
+
+    {% if matching_urls %}
+        <h2>Matching Image URLs:</h2>
+        <ul>
+            {% for url in matching_urls %}
+                <li><a href="{{ url }}" target="_blank">{{ url }}</a></li>
+            {% endfor %}
+        </ul>
+        <p>Tags found: {{ tags }}</p>
+    {% endif %}
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li style="color: {% if 'danger' in message %}red{% elif 'success' in message %}green{% endif %}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
